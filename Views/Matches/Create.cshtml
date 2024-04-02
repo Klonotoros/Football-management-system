@@ -1,0 +1,54 @@
+﻿@model Projekt.Models.Match
+
+@{
+    ViewData["Title"] = "Dodaj mecz - ";
+}
+
+<h1>Dodaj mecz:</h1>
+
+<h4>Mecz:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label">Data spotkania:</label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HomeTeamPoints" class="control-label">Punkty drużyny gospodarzy:</label>
+                <input asp-for="HomeTeamPoints" class="form-control" />
+                <span asp-validation-for="HomeTeamPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AwayTeamPoints" class="control-label">Punkty drużyny gości:</label>
+                <input asp-for="AwayTeamPoints" class="form-control" />
+                <span asp-validation-for="AwayTeamPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MatchTeamCombinations[0].TeamId, "Drużyna gospodarzy")
+                @Html.DropDownListFor(model => model.MatchTeamCombinations[0].TeamId, ViewBag.Teams as SelectList, "Wybierz drużynę", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MatchTeamCombinations[1].TeamId, "Drużyna gości")
+                @Html.DropDownListFor(model => model.MatchTeamCombinations[1].TeamId, ViewBag.Teams as SelectList, "Wybierz drużynę", new { @class = "form-control" })
+            </div>
+            
+
+
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" style="margin-top:10px;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" style="margin-top:10px; asp-action="Index">Wróć</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Projekt.Models.Match>
+@using Projekt.Models
+@{
+    ViewData["Title"] = "Mecze - ";
+}
+
+<h1>Mecze:</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Dodaj mecz:</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data:
+            </th>
+            <th>
+                Gospodarze:
+            </th>
+            <th>
+                Goście:
+            </th>
+            <th>
+                Wynik:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(x=>x.Date))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @item.MatchTeamCombinations.FirstOrDefault(x => x.IsHomeTeam)?.Team.Name
+                </td>
+                <td>
+                    @item.MatchTeamCombinations.FirstOrDefault(x => !x.IsHomeTeam)?.Team.Name
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeTeamPoints) - @Html.DisplayFor(modelItem => item.AwayTeamPoints)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-primary" style:"margin-left:10px;" asp-route-id=" @item.Id">Edytuj</a> |
+                    
+                    <a asp-action="Delete" class="btn btn-primary" style:"margin-left:10px;" asp-route-id=" @item.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+       
+    </tbody>
+</table>

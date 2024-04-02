@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Projekt.Models.Team>
+
+@{
+    ViewData["Title"] = "Drużyny - ";
+}
+
+<h1>Drużyny:</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Dodaj drużynę</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nazwa:
+            </th>
+            <th>
+                Wydział:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.IsActive && item.Id != 10)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Faculty)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-primary" style:"margin-left:10px;" asp-route-id="@item.Id">Edytuj</a> |
+                        <a asp-action="Details" class="btn btn-primary" style:"margin-left:10px;" asp-route-id="@item.Id">Detale</a> |
+                        <a asp-action="Delete" class="btn btn-primary" style:"margin-left:10px;" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

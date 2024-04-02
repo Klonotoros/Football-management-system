@@ -1,0 +1,48 @@
+﻿@model List<dynamic>
+@{
+    ViewData["Title"] = "Statystyki - ";
+}
+
+<h1>Statystyki:</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pozycja</th>
+            <th>Drużyna</th>
+            <th>Mecze</th>
+            <th>Wygrane</th>
+            <th>Remisy</th>
+            <th>Porażki</th>
+            <th>Bramki zdobyte</th>
+            <th>Bramki stracone</th>
+            <th>Punkty</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            var teamStat = Model[i];
+            var team = teamStat.Team;
+            var matchesPlayed = teamStat.MatchesPlayed;
+            var wins = teamStat.Wins;
+            var draws = teamStat.Draws;
+            var losses = teamStat.Losses;
+            var goalsFor = teamStat.GoalsFor;
+            var goalsAgainst = teamStat.GoalsAgainst;
+            var points = team.Points;
+            
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@team.Name</td>
+                <td>@matchesPlayed</td>
+                <td>@wins</td>
+                <td>@draws</td>
+                <td>@losses</td>
+                <td>@goalsFor</td>
+                <td>@goalsAgainst</td>
+                <td>@points</td>
+            </tr>
+        }
+    </tbody>
+</table>
