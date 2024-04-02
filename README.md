@@ -22,6 +22,12 @@ This Football Management System is a web application built with ASP.NET Core MVC
    ```bash
    dotnet run
    ```
+## Technologies Used:
+
+- 💜 C#: Efficient and performant language for backend development.
+- 🖼️ Entity Framework: Object-relational mapping (ORM) tool used for data management in databases.
+- 🗃️ MySQL (Database): Utilized for persistent data storage.
+- 💻 Visual Studio Code: Integrated development environment (IDE) for ASP.NET Core MVC.
 
 
 ## Features
@@ -32,3 +38,5 @@ This Football Management System is a web application built with ASP.NET Core MVC
 - **Match Team Combinations**: Assign teams to matches and specify whether they are playing at home or away.
 - **Statistics**: View team statistics including matches played, wins, draws, losses, goals for, goals against, and points.
 
+## Database schema:
+![image](https://github.com/Klonotoros/Football-management-system/assets/7630626/1def56fe-f19f-41eb-88e9-8a155326ffbb)
